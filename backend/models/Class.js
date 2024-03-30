@@ -13,7 +13,7 @@ const Review = mongoose.model('Review', reviewSchema)
 const classSchema = new mongoose.Schema({
     typeOfClass: {type: String, required: true},
     location: {type: String, required: true},
-    time: {type: Time, required: true},
+    time: {type: String, required: true},
     studio: {type: String, required: true},
     instructor: {type: String, required: true},
     review: [reviewSchema],
@@ -22,3 +22,6 @@ const classSchema = new mongoose.Schema({
 const Class = mongoose.model('Class', classSchema)
 
 module.exports = {Review, Class}
+
+
+//{type: Date, default: Date.now, required: true}}
