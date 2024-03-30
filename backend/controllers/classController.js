@@ -1,5 +1,16 @@
 const {Review, Class} = require('../models/Class.js')
 
+//const classSeed = require("../models/seed.js")
+/*
+//Seed data
+Class.create(classSeed)
+.then(data => {
+    console.log("added classes!")
+    })
+    .catch(err => {
+    console.log(err.message)
+})
+*/
 // Home Page
 const home = async(req, res) => {
     try{
