@@ -1,11 +1,11 @@
-const {Reservation} = require('../models/Class.js')
+const {Reservation} = require('../models/Reservation.js')
 
-//Reservation Index Page
+//Index 
 const reservation = async (req, res) => {
     try {
         const reservations = await Reservation.find()
         if(!reservations){
-            res.status(400).json({message: "Cannot find reservations"})
+            res.status(400).json({message: 'Cannot find reservations.'})
         } else {
             res.status(200).json({data: reservations})
         }
@@ -14,4 +14,38 @@ const reservation = async (req, res) => {
     }
 }
 
-//-->
+//Create 
+const create = async (req, res) => {
+    try {
+        const createRes = await Reservation.create(req.body)
+        createdRes.save()
+        if(!createdRes){
+            res.status(400).json({message: 'Cannot create the reservation.'})
+        } else {
+            res.status(201).json({data: createdRes, message: 'Reservation was created.'})
+        }
+    } catch(err) {
+        res.status(400).json({error: err.message})
+    }
+}
+
+//Delete
+const destroy = async (req, res) => {
+    try {
+        const index = req.params.id
+        const deleteRes = await Reservation.findByIdAndDelete(index)
+        if(deleteRes){
+            res.status(200).json({message: 'The reservation was deleted.'})
+        } else {
+            res.status(200).json({data: deleteRes, message: 'Could not delete reservation'})
+        }
+    } catch(err) {
+        res.status(400).json({error: err.message})
+    }
+}
+
+module.exports ={
+    reservation,
+    create,
+    destroy,
+}
