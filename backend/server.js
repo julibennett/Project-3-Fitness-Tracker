@@ -31,5 +31,3 @@ app.use(methodOverride("_method"))
 app.listen(PORT, () => {
     console.log(`I'm listening on ${PORT} 🫡`)
 })
-
-//need to add MONGODB_URI and PORT=4000 to a .env file 
