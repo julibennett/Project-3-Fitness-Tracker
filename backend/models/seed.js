@@ -2,7 +2,7 @@ module.exports = [
     {
         typeOfClass: "Yoga",
         location: "Portland, Oregon",
-        time: [new Date("2024-04-01T10:00:00"), new Date("2024-04-01T10:00:00")],
+        time: "7:00am",
         studio: "Lone Fir Fitness",
         instructor: "Ashley",
         review: []

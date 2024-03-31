@@ -29,6 +29,6 @@ app.use(methodOverride("_method"))
 //    res.status(404).json({message: "Not a proper route..."})
 //})
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log(`I'm listening on ${PORT} 🫡`)
 })
