@@ -1,4 +1,4 @@
-module.exports = [
+const classSeed = [
     {
         typeOfClass: "Yoga",
         location: "Portland, Oregon",
@@ -56,3 +56,5 @@ module.exports = [
         review: []
     },
 ]
+
+module.exports = classSeed

@@ -10,6 +10,7 @@ const methodOverride = require("method-override")
 const mongoose = require("mongoose")
 const mongoURI = process.env.MONGODB_URI
 const db = mongoose.connection
+const classRoutes = require('./routes/class')
 
 mongoose.connect(mongoURI)
 db.on('error', (err) => console.log(err.message + ' is mongo not running?'))
@@ -21,6 +22,8 @@ app.use(cors("*"))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride("_method"))
+
+app.use('/classes', classRoutes)
 
 //Routes
 //app.use("/fit", controllers)
