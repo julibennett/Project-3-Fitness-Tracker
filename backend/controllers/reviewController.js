@@ -14,7 +14,7 @@ const create = async(req, res) => {
         } else {
             foundClass.review.push(newReview)
             await foundClass.save()
-            res.status(200).json({data: newReview})
+            res.status(200).json({data: newReview, message: 'Review created.'})
         }
     } catch(err) {
         console.log(err)
@@ -34,7 +34,7 @@ const edit = async(req, res) => {
             res.status(400).json({message: 'Cannot find updated review.'})
 
         } else {
-           res.status(200).json({data: updatedReview, message: 'Review Updated.'})
+           res.status(200).json({data: updatedReview, message: 'Review updated.'})
         }
 
     } catch(err) {
@@ -65,7 +65,7 @@ const destroy = async(req, res) => {
         // const deletedReview = await Review.findByIdAndDelete(reviewId)
     
         if (!deletedReview){
-            res.status(400).json({message: 'Cannot find updated review.'})
+            res.status(400).json({message: 'Cannot delete review.'})
 
         } else {
             res.status(200).json({data: deletedReview, message: 'Review deleted.'})
