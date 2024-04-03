@@ -17,7 +17,7 @@ const reservation = async (req, res) => {
 //Create 
 const create = async (req, res) => {
     try {
-        const createRes = await Reservation.create(req.body)
+        const createdRes = await Reservation.create(req.body)
         createdRes.save()
         if(!createdRes){
             res.status(400).json({message: 'Cannot create the reservation.'})
@@ -33,11 +33,11 @@ const create = async (req, res) => {
 const destroy = async (req, res) => {
     try {
         const index = req.params.id
-        const deleteRes = await Reservation.findByIdAndDelete(index)
+        const deletedRes = await Reservation.findByIdAndDelete(index)
         if(deleteRes){
             res.status(200).json({message: 'The reservation was deleted.'})
         } else {
-            res.status(200).json({data: deleteRes, message: 'Could not delete reservation'})
+            res.status(200).json({data: deletedRes, message: 'Could not delete reservation'})
         }
     } catch(err) {
         res.status(400).json({error: err.message})
