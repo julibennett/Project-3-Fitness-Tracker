@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 const User = require("../models/User")
 
 const reviewSchema = new Schema({
-    userId: {type: Schema.Types.ObjectId, ref: 'User', required: true},
+    userId: {type: Schema.Types.ObjectId, ref: 'User'},
     username: {type: String, required: true},
     comments: [String],
     date: String,

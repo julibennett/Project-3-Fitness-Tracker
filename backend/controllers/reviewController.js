@@ -1,13 +1,14 @@
-const Review = require('../models/Class.js')
+const Class = require('../models/Class.js').Class
+const Review = require('../models/Class.js').Review
 const User = require('../models/User.js')
 
 // Create Route
 const create = async(req, res) => {
     try{
         const newReview = await Review.create(req.body)
-        const user = await User.findbyId(req.params.userId)
+        //const user = await User.findbyId(req.params.userId)
         const foundClass = await Class.findById(req.params.id)
-        console.log(user, 'USER', newReview, 'NEW REVIEW')
+        //console.log(user, 'USER', newReview, 'NEW REVIEW')
 
         if(!newReview) {
             res.status(400).json({message: 'Cannot find review.'})
@@ -64,7 +65,7 @@ const destroy = async(req, res) => {
 
         // const deletedReview = await Review.findByIdAndDelete(reviewId)
     
-        if (!deletedReview){
+        if (deletedReview){
             res.status(400).json({message: 'Cannot delete review.'})
 
         } else {

@@ -11,6 +11,8 @@ const mongoose = require("mongoose")
 const mongoURI = process.env.MONGODB_URI
 const db = mongoose.connection
 const classRoutes = require('./routes/class')
+const reservationRoutes = require('./routes/reservation')
+const reviewRoutes = require('./routes/review')
 
 mongoose.connect(mongoURI)
 db.on('error', (err) => console.log(err.message + ' is mongo not running?'))
@@ -23,10 +25,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride("_method"))
 
-app.use('/classes', classRoutes)
-
 //Routes
-//app.use("/fit", controllers)
+app.use('/class', classRoutes)
+app.use('/reservation', reservationRoutes)
+app.use('/', reviewRoutes)
 
 //app.use((req, res) => {
 //    res.status(404).json({message: "Not a proper route..."})

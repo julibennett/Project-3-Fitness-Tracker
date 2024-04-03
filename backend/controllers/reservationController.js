@@ -1,4 +1,5 @@
 const {Reservation} = require('../models/Reservation.js')
+const {Class} = require('../models/Class.js').Class
 
 //Index 
 const reservation = async (req, res) => {
@@ -17,6 +18,8 @@ const reservation = async (req, res) => {
 //Create 
 const create = async (req, res) => {
     try {
+        const foundClass = await Class.findById(classId)
+        console.log(foundClass)
         const createdRes = await Reservation.create(req.body)
         createdRes.save()
         if(!createdRes){
