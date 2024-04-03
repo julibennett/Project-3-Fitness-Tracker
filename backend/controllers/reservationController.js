@@ -37,7 +37,7 @@ const destroy = async (req, res) => {
     try {
         const index = req.params.id
         const deletedRes = await Reservation.findByIdAndDelete(index)
-        if(deleteRes){
+        if(deletedRes){
             res.status(200).json({message: 'The reservation was deleted.'})
         } else {
             res.status(200).json({data: deletedRes, message: 'Could not delete reservation'})
