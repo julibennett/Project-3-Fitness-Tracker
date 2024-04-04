@@ -7,8 +7,6 @@ import Reservations from "../pages/Reservations"
 const Reservation = (props) => {
     const [reservation, setReservation] = useState(null)
 
-    const URL = "http://localhost:4000/reservation"
-
     const getReservation = async() => {
         const response = await fetch(URL)
         const data = await response.json()
@@ -16,13 +14,13 @@ const Reservation = (props) => {
         console.log(data.data)
     }
 
-    const createReservation = async(reservation) => {
+    const createReservation = async(classData) => {
         const createdRes = await fetch(URL, {
             method: "POST",
             headers: {
-
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify.reservation
+            body: JSON.stringify(classData)
         })
         getReservation()
         console.log(createdRes)
@@ -41,7 +39,8 @@ const Reservation = (props) => {
 
     return (
         <Routes>
-            <Route path="/reservation" element={<Reservations createReservation={createReservation}/>}/>
+            <Route path="/reservation" element={<Reservations reservation={reservation} createReservation={createReservation}/>}/>
+            <Route path="/reservation/:id" element={<Reservations deleteReservation={deleteReservation}/>}/>
         </Routes>
     )
 }
