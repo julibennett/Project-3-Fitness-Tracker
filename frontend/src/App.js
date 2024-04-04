@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import { Route, Routes } from "react-router-dom"
 import Reservation from './components/Reservation'
 import Add from './components/Add'
+import Home from './pages/Home';
+import ClassShow from './pages/ClassShow';
 
 
 
@@ -31,6 +33,11 @@ function App() {
       </h1>
       <Routes>
         <Route path="/" element={<Reservation URL={resURL} classData={classData}/>}/>
+
+        {/* Class Routes below*/}
+        <Route path="/" element={<Home />} exact />
+        <Route path="/:id" element={<ClassShow />} />
+
       </Routes>
       <Add />
     </div>
