@@ -5,20 +5,27 @@ const Reservations = (reservation) => {
   const params = useParams()
   const id = params.id
 
+  const loaded = (props) => {
+    return props.reservation.map((classData, idx) => {
+      return(
+        <div key={idx}>
+          <h1>{classData.studio}</h1>
+          <p>{classData.location}</p>
+          <p>{classData.typeOfClass}</p>
+          <p>{classData.location}</p>
+          <button onClick={removeReservation}>Delete</button>
+        </div>
+      )
+    })
+  }
+
   const removeReservation = (e) => {
     e.preventDefault()
     reservation.deleteReservation(id)
     navigate("/reservation")
   }
 
-
-  return (
-    <div>
-      <h1>My Reservations</h1>
-      <strong>{reservation.typeOfClass}</strong>
-      <input type="button" value="Delete" onClick={removeReservation}/>
-    </div>
-  )
+  return (reservation ? loaded() : <h1>Loading ...</h1>)
 }
 
 export default Reservations
