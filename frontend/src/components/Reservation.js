@@ -10,8 +10,8 @@ const Reservation = (props) => {
     const getReservation = async() => {
         const response = await fetch(URL)
         const data = await response.json()
-        setReservation(data.data)
-        console.log(data.data)
+        setReservation(data)
+        console.log(data)
     }
 
     const createReservation = async(classData) => {
@@ -40,6 +40,7 @@ const Reservation = (props) => {
     return (
         <Routes>
             <Route path="/reservation" element={<Reservations reservation={reservation} createReservation={createReservation}/>}/>
+            {/*OR do i pass createReservation into a class index page route with the add button? */}
             <Route path="/reservation/:id" element={<Reservations deleteReservation={deleteReservation}/>}/>
         </Routes>
     )
