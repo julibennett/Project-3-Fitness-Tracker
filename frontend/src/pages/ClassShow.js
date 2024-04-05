@@ -26,12 +26,14 @@ const ClassShow = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1>{workoutClass.type}</h1>
+      <h1>{workoutClass.typeOfClass}</h1>
       <p>{workoutClass.location}</p>
       <p>{workoutClass.time}</p>
       <p>{workoutClass.studio}</p>
       <p>{workoutClass.instructor}</p>
-      <p>{workoutClass.review}</p>
+      {workoutClass.review && workoutClass.review.map((review, index) => (
+      <p key={index}>{review}</p>
+    ))}
     </div>
   )
 }
