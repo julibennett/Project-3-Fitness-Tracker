@@ -11,6 +11,8 @@ import ClassShow from './pages/ClassShow';
 
 function App() {
 
+  const classURL = 'http://localhost:4000/class'
+
   //Reservation
   const resURL = "http://localhost:4000/reservation"
 
@@ -35,7 +37,7 @@ function App() {
         <Route path="/" element={<Reservation URL={resURL} classData={classData}/>}/>
 
         {/* Class Routes below*/}
-        <Route path="/" element={<Home />} exact />
+        <Route path="/" element={<Home />} />
         <Route path="/:id" element={<ClassShow />} />
 
       </Routes>

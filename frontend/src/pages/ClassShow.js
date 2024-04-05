@@ -1,23 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const ClassShow = (props) => {
+const ClassShow = () => {
   const { id } = useParams();
   const [workoutClass, setWorkoutClass] = useState(null);
 
   useEffect(() => {
-    const URL = `http://localhost:3000/class/${id}`;
+    
+    const URL = `http://localhost:4000/class/${id}`;
 
     const fetchClassDetails = async () => {
-      const response = await fetch(URL)
-      const data = await response.json()
-      setWorkoutClass(data)
+      try {
+        const response = await fetch(URL)
+        const data = await response.json()
+        setWorkoutClass(data)
+      } catch (error) {
+        console.error('Failed to fetch class details:', error)
+      }
     };
 
     fetchClassDetails()
   }, [id])
 
-  if (!workoutClass) return <div>Loading...</div>;
+  if (!workoutClass) return <div>Loading...</div>
 
   return (
     <div className="container mx-auto p-4">
