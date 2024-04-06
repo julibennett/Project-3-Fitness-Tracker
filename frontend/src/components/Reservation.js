@@ -20,6 +20,7 @@ const Reservation = (props) => {
     }
 
     const createReservation = async(classData) => {
+        console.log("creating res")
         const createdRes = await fetch(URL, {
             method: "POST",
             headers: {
@@ -45,9 +46,8 @@ const Reservation = (props) => {
 
     return (
         <Routes>
-            <Route path="/reservation" element={<Reservations reservation={reservation} />}/>
+            <Route path="/reservation" element={<Reservations reservation={reservation} createReservation={createReservation}/>}/>
             <Route path="/reservation/:id" element={<Reservations deleteReservation={deleteReservation} />}/>
-            <Route path="/:id" element={<ClassShow createReservation={createReservation} />}/>
         </Routes>
     )
 }

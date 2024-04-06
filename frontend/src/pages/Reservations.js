@@ -2,8 +2,7 @@ import { useParams, useNavigate } from "react-router-dom"
 
 const Reservations = ({props, reservation}) => {
   const navigate = useNavigate()
-  const params = useParams()
-  const id = params.id
+  const { id } = useParams();
 
   const loaded = () => {
     return props.reservation.map((workoutClass) => {

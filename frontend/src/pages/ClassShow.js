@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Add from '../components/Add';
 
-const ClassShow = (props) => {
+const ClassShow = () => {
   const { id } = useParams();
   const [workoutClass, setWorkoutClass] = useState(null);
 
@@ -23,9 +23,26 @@ const ClassShow = (props) => {
     fetchClassDetails()
   }, [id])
 
+  const navigate = useNavigate()
+  const resURL = "http://localhost:4000/reservation/"
+
+  const createReservation = async(workoutClass) => {
+    console.log(workoutClass)
+    //push workoutClass into an array here and pass the array into the post method to backend 
+    const createRes = await fetch(resURL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(workoutClass)
+    })
+    //navigate("/reservation")
+    console.log(createRes)
+  }
+
   const addClass = (e) => {
     e.preventDefault()
-    props.createReservation(workoutClass)
+    createReservation(workoutClass)
   }
 
   if (!workoutClass) return <div>Loading...</div>
@@ -40,7 +57,7 @@ const ClassShow = (props) => {
       {workoutClass.review && workoutClass.review.map((review, index) => (
       <p key={index}>{review}</p>
     ))}
-
+    <Add addClass={addClass}/>
     </div>
   )
 }
