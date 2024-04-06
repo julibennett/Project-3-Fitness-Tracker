@@ -1,18 +1,12 @@
 
 import './App.css';
-// import { useState, useEffect } from "react"
 import { Route, Routes } from "react-router-dom"
 import Reservation from './components/Reservation'
-// import Add from './components/Add'
 import Home from './pages/Home';
 import ClassShow from './pages/ClassShow';
 
 function App() {
 
-  // const classURL = 'http://localhost:4000/class'
-
-  //Reservation
-  // const resURL = "http://localhost:4000/reservation"
 
   return (
     <div className="App">

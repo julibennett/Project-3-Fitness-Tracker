@@ -1,17 +1,22 @@
 import { useState, useEffect } from "react"
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 
 //Import Pages
 import Reservations from "../pages/Reservations"
+import ClassShow from "../pages/ClassShow"
 
 const Reservation = (props) => {
+    const navigate = useNavigate()
+
+    const URL = "http://localhost:4000/reservation/"
+
     const [reservation, setReservation] = useState(null)
 
     const getReservation = async() => {
         const response = await fetch(URL)
         const data = await response.json()
-        setReservation(data)
-        console.log(data)
+        setReservation(data.data)
+        console.log(data.data)
     }
 
     const createReservation = async(classData) => {
@@ -22,6 +27,7 @@ const Reservation = (props) => {
             },
             body: JSON.stringify(classData)
         })
+        navigate("/reservation")
         getReservation()
         console.log(createdRes)
     }
@@ -35,13 +41,13 @@ const Reservation = (props) => {
 
     useEffect(() => {
         getReservation()
-    }, [])
+    }, []);
 
     return (
         <Routes>
-            <Route path="/reservation" element={<Reservations reservation={reservation} createReservation={createReservation}/>}/>
-            {/*OR do i pass createReservation into a class index page route with the add button? */}
-            <Route path="/reservation/:id" element={<Reservations deleteReservation={deleteReservation}/>}/>
+            <Route path="/reservation" element={<Reservations reservation={reservation} />}/>
+            <Route path="/reservation/:id" element={<Reservations deleteReservation={deleteReservation} />}/>
+            <Route path="/:id" element={<ClassShow createReservation={createReservation} />}/>
         </Routes>
     )
 }

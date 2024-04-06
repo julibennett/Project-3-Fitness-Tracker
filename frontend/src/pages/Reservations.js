@@ -1,18 +1,18 @@
 import { useParams, useNavigate } from "react-router-dom"
 
-const Reservations = (reservation) => {
+const Reservations = ({props, reservation}) => {
   const navigate = useNavigate()
   const params = useParams()
   const id = params.id
 
-  const loaded = (props) => {
-    return props.reservation.map((classData, idx) => {
+  const loaded = () => {
+    return props.reservation.map((workoutClass) => {
       return(
-        <div key={idx}>
-          <h1>{classData.studio}</h1>
-          <p>{classData.location}</p>
-          <p>{classData.typeOfClass}</p>
-          <p>{classData.location}</p>
+        <div key={workoutClass._id}>
+          <h1>{workoutClass.studio}</h1>
+          <p>{workoutClass.location}</p>
+          <p>{workoutClass.typeOfClass}</p>
+          <p>{workoutClass.location}</p>
           <button onClick={removeReservation}>Delete</button>
         </div>
       )

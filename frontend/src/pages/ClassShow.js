@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Add from '../components/Add';
 
-const ClassShow = () => {
+const ClassShow = (props) => {
   const { id } = useParams();
   const [workoutClass, setWorkoutClass] = useState(null);
 
@@ -13,7 +14,7 @@ const ClassShow = () => {
       try {
         const response = await fetch(URL)
         const data = await response.json()
-        setWorkoutClass(data)
+        setWorkoutClass(data.data)
       } catch (error) {
         console.error('Failed to fetch class details:', error)
       }
@@ -21,6 +22,11 @@ const ClassShow = () => {
 
     fetchClassDetails()
   }, [id])
+
+  const addClass = (e) => {
+    e.preventDefault()
+    props.createReservation(workoutClass)
+  }
 
   if (!workoutClass) return <div>Loading...</div>
 
@@ -34,6 +40,7 @@ const ClassShow = () => {
       {workoutClass.review && workoutClass.review.map((review, index) => (
       <p key={index}>{review}</p>
     ))}
+
     </div>
   )
 }
