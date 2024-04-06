@@ -40,3 +40,5 @@ app.use('/', reviewRoutes)
 app.listen(process.env.PORT, () => {
     console.log(`I'm listening on ${PORT} 🫡`)
 })
+
+console.log('hello world')
