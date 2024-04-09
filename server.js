@@ -29,7 +29,7 @@ app.use(methodOverride("_method"))
 //Routes
 app.use('/api', userRoutes)
 app.use('/class', classRoutes)
-app.use('/reservation', reservationRoutes)
+app.use('/api/reservation', reservationRoutes)
 app.use('/', reviewRoutes)
 
 
