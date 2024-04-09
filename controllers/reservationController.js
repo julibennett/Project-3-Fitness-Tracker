@@ -5,9 +5,9 @@ const {Class} = require('../models/Class.js').Class
 const reservation = async (req, res) => {
     try {
         const reservations = await Reservation.find()
-        if(!reservations){
-            res.status(400).json({message: 'Cannot find reservations.'})
-        } else {
+        if (reservations.length === 0) {
+            res.status(404).json({message: 'No reservations found.'})
+          } else {
             res.status(200).json({data: reservations})
         }
     } catch (error) {
@@ -18,34 +18,31 @@ const reservation = async (req, res) => {
 //Create 
 const create = async (req, res) => {
     try {
-        const foundClass = await Class.findById(classId)
-        //console.log(foundClass)
-        const createdRes = await Reservation.create(req.body)
-        createdRes.save()
-        if(!createdRes){
-            res.status(400).json({message: 'Cannot create the reservation.'})
-        } else {
-            res.status(201).json({data: createdRes, message: 'Reservation was created.'})
+        const foundClass = await Class.findById(req.body.classId)
+        if (!foundClass) {
+            return res.status(404).json({message: 'Class not found.'})
         }
+        const createdRes = await Reservation.create(req.body)
+        res.status(201).json({data: createdRes, message: 'Reservation was created.'})
     } catch(err) {
         res.status(400).json({error: err.message})
     }
-}
+};
 
 //Delete
 const destroy = async (req, res) => {
     try {
-        const index = req.params.id
-        const deletedRes = await Reservation.findByIdAndDelete(index)
-        if(deletedRes){
-            res.status(200).json({message: 'The reservation was deleted.'})
+        const deletedRes = await Reservation.findByIdAndDelete(req.params.id)
+        if (!deletedRes) {
+            res.status(404).json({message: 'Reservation not found or already deleted.'})
         } else {
-            res.status(200).json({data: deletedRes, message: 'Could not delete reservation'})
+            res.status(200).json({message: 'The reservation was deleted.', data: deletedRes})
         }
     } catch(err) {
         res.status(400).json({error: err.message})
     }
-}
+};
+
 
 module.exports ={
     reservation,
