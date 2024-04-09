@@ -4,10 +4,10 @@ const User = require("../models/User")
 
 const reviewSchema = new Schema({
     userId: {type: Schema.Types.ObjectId, ref: 'User'},
-    username: {type: String, required: true},
+    username: {type: String},
     comments: [String],
     date: String,
-})
+}, {timestamps: true})
 
 const Review = mongoose.model('Review', reviewSchema)
 
