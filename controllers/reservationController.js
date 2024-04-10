@@ -2,50 +2,103 @@ const {Reservation} = require('../models/Reservation.js')
 const {Class} = require('../models/Class.js').Class
 
 //Index 
+// const reservation = async (req, res) => {
+//     try {
+//         const reservations = await Reservation.find()
+//         if (reservations.length === 0) {
+//             res.status(404).json({message: 'No reservations found.'})
+//           } else {
+//             res.status(200).json({data: reservations})
+//         }
+//     } catch (error) {
+//         res.status(500).json({error: error.message})
+//     }
+// }
+
 const reservation = async (req, res) => {
     try {
-        const reservations = await Reservation.find()
-        if (reservations.length === 0) {
-            res.status(404).json({message: 'No reservations found.'})
-          } else {
-            res.status(200).json({data: reservations})
+        const userId = req.session.currentUser;
+        if (!userId) {
+            console.log('User ID is not available in the session.');
+            return res.status(401).json({ message: 'Not authenticated' });
         }
-    } catch (error) {
-        res.status(500).json({error: error.message})
+        const reservations = await Reservation.find({ userId: userId, attending: true })
+            .populate({
+                path: 'classId',
+                model: 'Class'
+            });
+
+        const attendingClasses = reservations.map(reservation => {
+            return {
+                ...reservation.classId.toObject(),
+                attending: reservation.attending
+            };
+        });
+
+        res.json({ attendingClasses });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal Server Error' });
     }
 }
 
 //Create 
-const create = async (req, res) => {
+const createRes = async (req, res) => {
     try {
-        const foundClass = await Class.findById(req.body.classId)
-        if (!foundClass) {
-            return res.status(404).json({message: 'Class not found.'})
+        const { classId, attending } = req.body;
+        const userId = req.session.currentUser;
+
+        if (!userId) {
+            console.log('User ID is not available in the session.');
+            return res.status(401).json({ message: 'Not authenticated' });
         }
-        const createdRes = await Reservation.create(req.body)
-        res.status(201).json({data: createdRes, message: 'Reservation was created.'})
-    } catch(err) {
-        res.status(400).json({error: err.message})
+
+        await Reservation.findOneAndUpdate(
+            { userId, classId },
+            { attending: attending === 'true' },
+            { upsert: true, new: true }
+        );
+
+        res.json({ message: 'Attendance updated' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal Server Error' });
     }
-};
+}
 
 //Delete
-const destroy = async (req, res) => {
+const destroyRes = async (req, res) => {
     try {
-        const deletedRes = await Reservation.findByIdAndDelete(req.params.id)
-        if (!deletedRes) {
-            res.status(404).json({message: 'Reservation not found or already deleted.'})
-        } else {
-            res.status(200).json({message: 'The reservation was deleted.', data: deletedRes})
+        const { classId } = req.body;
+        const userId = req.session.currentUser;
+
+        if (!userId) {
+            console.log('User ID is not available in the session.');
+            return res.status(401).json({ message: 'Not authenticated' });
         }
-    } catch(err) {
-        res.status(400).json({error: err.message})
+
+        
+        const deletionResult = await Reservation.findOneAndDelete({
+            userId: userId,
+            classId: classId
+        });
+
+        if (!deletionResult) {
+            return res.status(404).json({ message: 'Reservation not found' });
+        }
+
+        res.json({ message: 'Reservation cancelled successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal Server Error' });
     }
-};
+}
+
+
 
 
 module.exports ={
     reservation,
-    create,
-    destroy,
+    createRes,
+    destroyRes,
 }
