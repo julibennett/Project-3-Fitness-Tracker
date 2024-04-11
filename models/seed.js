@@ -1,6 +1,7 @@
 const classSeed = [
     {
         typeOfClass: "Yoga",
+        image: "https://i.imgur.com/StsJe6K.png",
         location: "Portland, Oregon",
         time: "7:00am",
         studio: "Lone Fir Fitness",
@@ -9,6 +10,7 @@ const classSeed = [
     },
     {
         typeOfClass: "Cycling",
+        image: "https://i.imgur.com/wJH9LFn.png",
         location: "Bend, Oregon",
         time: "9:00am",
         studio: "Soul Cycle",
@@ -17,44 +19,39 @@ const classSeed = [
     },
     {
         typeOfClass: "Cycling",
-        location: "Bend, Oregon",
-        time: "9:30am",
-        studio: "Rush Cycle",
-        instructor: "Franklin",
-        review: []
-    },
-    {
-        typeOfClass: "Strength",
-        location: "Beaverton, Oregon",
-        time: "2:00pm",
-        studio: "Studio X",
-        instructor: "Corbin",
-        review: []
-    },
-    {
-        typeOfClass: "HIIT",
+        image: "https://i.imgur.com/FZGJgwi.png",
         location: "Portland, Oregon",
-        time: "6:00pm",
-        studio: "Orange Theory",
-        instructor: "Jessica",
+        time: "9:30am",
+        studio: "Cycle Bar",
+        instructor: "Franklin",
         review: []
     },
     {
         typeOfClass: "Pilates",
-        location: "Bend, Oregon",
-        time: "6:00am",
-        studio: "Power Pilates",
-        instructor: "Mary",
+        image: "https://i.imgur.com/QEP4e5z.png",
+        location: "Beavorton, Oregon",
+        time: "9:00am",
+        studio: "Club Pilates",
+        instructor: "Bobby",
         review: []
     },
     {
-        typeOfClass: "Yoga",
-        location: "Salem, Oregon",
+        typeOfClass: "Strength, Endurance",
+        image: "https://i.imgur.com/2StIXoC.png",
+        location: "Portland, Oregon",
         time: "9:30am",
-        studio: "Rush Cycle",
-        instructor: "Franklin",
+        studio: "Orange Theory",
+        instructor: "Connor",
+        review: []
+    },
+    {
+        typeOfClass: "Kickboxing",
+        image: "https://i.imgur.com/edXdPJl.png",
+        location: "Bend, Oregon",
+        time: "6:00pm",
+        studio: "Rumble",
+        instructor: "Nikki",
         review: []
     },
 ]
-
 module.exports = classSeed

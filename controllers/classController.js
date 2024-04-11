@@ -2,6 +2,11 @@ const {Review, Class} = require('../models/Class.js')
 
 const classSeed = require("../models/seed.js")
 
+
+/*
+Class.deleteMany({})
+console.log("deleted docs")
+*/
 /*
 //Seed data
 Class.create(classSeed)
@@ -12,6 +17,9 @@ Class.create(classSeed)
     console.log(err.message)
 })
 */
+
+
+
 
 // Home Page
 const home = async(req, res) => {
