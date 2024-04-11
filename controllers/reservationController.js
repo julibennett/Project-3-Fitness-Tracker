@@ -1,5 +1,5 @@
-const {Reservation} = require('../models/Reservation.js')
-const {Class} = require('../models/Class.js').Class
+const Reservation = require('../models/Reservation.js')
+const {Review, Class} = require('../models/Class.js')
 
 //Index 
 const reservation = async (req, res) => {
