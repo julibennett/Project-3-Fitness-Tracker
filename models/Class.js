@@ -13,6 +13,7 @@ const Review = mongoose.model('Review', reviewSchema)
 
 const classSchema = new mongoose.Schema({
     typeOfClass: {type: String, required: true},
+    image: {type: String},
     location: {type: String, required: true},
     time: {type: String, required: true},
     studio: {type: String, required: true},
