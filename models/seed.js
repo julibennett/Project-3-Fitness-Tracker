@@ -1,7 +1,7 @@
 const classSeed = [
     {
         typeOfClass: "Yoga",
-        image: "https://i.imgur.com/StsJe6K.png",
+        image: "https://i.imgur.com/YZk43vo.png",
         location: "Portland, Oregon",
         time: "April 15th, 7:00am",
         studio: "Lone Fir Fitness",
@@ -10,7 +10,7 @@ const classSeed = [
     },
     {
         typeOfClass: "Cycling",
-        image: "https://i.imgur.com/wJH9LFn.png",
+        image: "https://i.imgur.com/gFfT8Ji.png",
         location: "Bend, Oregon",
         time: "April 20th, 9:00am",
         studio: "Soul Cycle",
@@ -19,7 +19,7 @@ const classSeed = [
     },
     {
         typeOfClass: "Cycling",
-        image: "https://i.imgur.com/FZGJgwi.png",
+        image: "https://i.imgur.com/60hGPme.png",
         location: "Portland, Oregon",
         time: "April 25th, 9:30am",
         studio: "Cycle Bar",
@@ -28,7 +28,7 @@ const classSeed = [
     },
     {
         typeOfClass: "Pilates",
-        image: "https://i.imgur.com/QEP4e5z.png",
+        image: "https://i.imgur.com/BgQFiMW.png",
         location: "Beavorton, Oregon",
         time: "May 2nd, 9:00am",
         studio: "Club Pilates",
@@ -37,7 +37,7 @@ const classSeed = [
     },
     {
         typeOfClass: "Strength, Endurance",
-        image: "https://i.imgur.com/2StIXoC.png",
+        image: "https://i.imgur.com/jw0u1xb.png",
         location: "Portland, Oregon",
         time: "May 10th, 9:30am",
         studio: "Orange Theory",
@@ -46,7 +46,7 @@ const classSeed = [
     },
     {
         typeOfClass: "Kickboxing",
-        image: "https://i.imgur.com/edXdPJl.png",
+        image: "https://i.imgur.com/pUdoHEo.png",
         location: "Bend, Oregon",
         time: " May 14th, 6:00pm",
         studio: "Rumble",
