@@ -4,11 +4,22 @@ const {Review, Class} = require('../models/Class.js')
 //Index 
 const reservation = async (req, res) => {
     try {
-        const reservations = await Reservation.find()
+        // Assuming 'classId' is stored in each Reservation document as a reference to a Class document
+       
+        const reservations = await Reservation.find().populate('classId');
+       
         if (reservations.length === 0) {
             res.status(404).json({message: 'No reservations found.'})
-          } else {
-            res.status(200).json({data: reservations})
+        } else {
+            // Transforming data to include class details more clearly
+            const reservationsWithClassDetails = reservations.map(res => ({
+                ...res.toObject(),
+                className: res.classId.typeOfClass,  
+                classType: res.classId.type,  
+                classLocation: res.classId.location  
+            }));
+            res.status(200).json({data: reservationsWithClassDetails})
+            console.log(data)
         }
     } catch (error) {
         res.status(500).json({error: error.message})

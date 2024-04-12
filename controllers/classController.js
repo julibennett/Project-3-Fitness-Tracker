@@ -3,20 +3,20 @@ const {Review, Class} = require('../models/Class.js')
 const classSeed = require("../models/seed.js")
 
 
-/*
-Class.deleteMany({})
-console.log("deleted docs")
-*/
-/*
-//Seed data
-Class.create(classSeed)
-.then(data => {
-    console.log("added classes!")
-    })
-    .catch(err => {
-    console.log(err.message)
-})
-*/
+
+// Class.deleteMany({})
+// console.log("deleted docs")
+
+
+// Seed data
+// Class.create(classSeed)
+// .then(data => {
+//     console.log("added classes!")
+//     })
+//     .catch(err => {
+//     console.log(err.message)
+// })
+
 
 
 

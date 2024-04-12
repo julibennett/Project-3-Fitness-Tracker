@@ -36,11 +36,9 @@ const login = async (req, res) => {
         const {username, password, email} = req.body
         // prep our query for execution
         const query = User.find({})
-        // query.and([{key: value}, {key: value}]) <-- checks for data at [0] OR [1], in this case
-        // this behavior REQUIRES our user to give us their username, email, AND password in order to login
-        // change this query depending on your preferred login credentials for your user
+       
         query.and([{username: username},{email:email}])
-        // run the query! returns an array, empty or not
+       
         const foundUser = await query.exec()
         
         if(foundUser.length === 0){
@@ -48,14 +46,13 @@ const login = async (req, res) => {
         }
 
         const verifyPassword = await bcrypt.compare(password, foundUser[0].password)
-        // password doesnt match!
+       
         if (!verifyPassword) {
             return res.status(400).json({error: "Invalid login credentials"})
         }
 
         const token = createToken(foundUser[0])
-        // console.log(foundUser[0]._id)
-        // sending the id up to the frontend will make it easier to use it in API calls! The same goes for any user info you may need.
+       
         return res.status(200).json({token, id: foundUser[0]._id})
 
     }catch(err){
@@ -68,10 +65,10 @@ const getUser = async (req, res) => {
     try{
         const id = req.params.id
         const query = User.findById(id)
-        // another Query() operation! So cool!
+        
         query.select('-password')
         const foundUser = await query.exec()
-        // console.log(foundUser)
+        
         if(!foundUser){
             return res.status(400).json({error: "User not found"})
         }
