@@ -28,9 +28,9 @@ app.use(methodOverride("_method"))
 
 //Routes
 app.use('/api', userRoutes)
-app.use('/class', classRoutes)
+app.use('/api/class', classRoutes)
 app.use('/api/reservation', reservationRoutes)
-app.use('/', reviewRoutes)
+app.use('/api', reviewRoutes)
 
 
 //app.use((req, res) => {
