@@ -2,29 +2,42 @@ const Reservation = require('../models/Reservation.js')
 const {Review, Class} = require('../models/Class.js')
 
 //Index 
+// const reservation = async (req, res) => {
+//     try {
+//         // Assuming 'classId' is stored in each Reservation document as a reference to a Class document
+       
+//         const reservations = await Reservation.find().populate('classId');
+       
+//         if (reservations.length === 0) {
+//             res.status(404).json({message: 'No reservations found.'})
+//         } else {
+//             // Transforming data to include class details more clearly
+//             const reservationsWithClassDetails = reservations.map(res => ({
+//                 ...res.toObject(),
+//                 className: res.classId.typeOfClass,  
+//                 classType: res.classId.typeOfClass,  
+//                 classLocation: res.classId.location  
+//             }));
+//             res.status(200).json({data: reservationsWithClassDetails})
+//             console.log(data)
+//         }
+//     } catch (error) {
+//         res.status(500).json({error: error.message})
+//     }
+// }
+
 const reservation = async (req, res) => {
     try {
-        // Assuming 'classId' is stored in each Reservation document as a reference to a Class document
-       
         const reservations = await Reservation.find().populate('classId');
-       
-        if (reservations.length === 0) {
-            res.status(404).json({message: 'No reservations found.'})
-        } else {
-            // Transforming data to include class details more clearly
-            const reservationsWithClassDetails = reservations.map(res => ({
-                ...res.toObject(),
-                className: res.classId.typeOfClass,  
-                classType: res.classId.type,  
-                classLocation: res.classId.location  
-            }));
-            res.status(200).json({data: reservationsWithClassDetails})
-            console.log(data)
+        if (!reservations.length) {
+            return res.status(404).json({ message: 'No reservations found.' });
         }
+        res.status(200).json({ data: reservations });  // Sending back populated data
     } catch (error) {
-        res.status(500).json({error: error.message})
+        res.status(500).json({ error: error.message });
     }
-}
+};
+
 
 //Create 
 const create = async (req, res) => {
