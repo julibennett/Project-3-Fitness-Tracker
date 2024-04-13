@@ -36,6 +36,10 @@ app.use('/api', reviewRoutes)
 //app.use((req, res) => {
 //    res.status(404).json({message: "Not a proper route..."})
 //})
+app.get('/', (req, res) => {
+    res.send('Welcome to My API');
+});
+
 
 app.listen(process.env.PORT, () => {
     console.log(`I'm listening on ${PORT} 🫡`)
