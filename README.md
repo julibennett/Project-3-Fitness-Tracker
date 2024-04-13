@@ -17,34 +17,42 @@ Take care of all your class tracking needs with our new app, FITHUB! Manage your
 <br/>
 
 ## Technologies Used:
-HTML <br/>
-JavaScript <br/>
-MongoDB <br/>
-Mongoose <br/>
-Express.js <br/>
-Node.js <br/>
-CORS <br/>
-JWT/Bcyprt<br/>
-Resources:
-Lecture Notes <br/>
-Stack Overflow <br/>
-ChatGpt <br/>
+- HTML <br/>
+- JavaScript <br/>
+- MongoDB <br/>
+- Mongoose <br/>
+- Express.js <br/>
+- Node.js <br/>
+- CORS <br/>
+- JWT/Bcyprt<br/>
+- Resources:
+- Lecture Notes <br/>
+- Stack Overflow <br/>
+- ChatGpt <br/>
 
 ## Click to view FitHub:
-https://fithub-frontend-8c32195b1449.herokuapp.com/class<br/>
+
+- [Live View](https://fithub-frontend-8c32195b1449.herokuapp.com/class 'Live View') 
+- [Frontend Repo](https://github.com/julibennett/FitHub-frontend 'FitHub Frontend')
+- [Backend Repo](https://github.com/julibennett/Project-3-Fitness-Tracker  'FitHub Backend')
 
 ## Trello Board:
-https://trello.com/b/nPVrBjKJ/project-3<br/>
+- [Trello Board](https://trello.com/b/nPVrBjKJ/project-3 'Trello')
 
 ## Next Steps: 
 - Incorporate ClassPass API into our application.
+
 - Add an administrator role.
 
 ## Collaborators
 
-**Julianna Bennett**<br/>
+**Julianna Bennett** <br/>
 
-**Bonnie Liu**
+- [LinkedIn](https://www.linkedin.com/in/julianna-bennett4/)
+
+**Bonnie Liu** <br/>
+
+- [LinkedIn](http://linkedin.com/in/bonnil1)
 
 ## Show Your Support!
 
