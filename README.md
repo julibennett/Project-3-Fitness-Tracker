@@ -37,12 +37,13 @@ https://fithub-frontend-8c32195b1449.herokuapp.com/class<br/>
 https://trello.com/b/nPVrBjKJ/project-3<br/>
 
 ## Next Steps: 
-~ Incorporate ClassPass API into our application.
-~ Add an administrator role.
+- Incorporate ClassPass API into our application.
+- Add an administrator role.
 
 ## Collaborators
 
-**Julianna Bennett**
+**Julianna Bennett**<br/>
+
 **Bonnie Liu**
 
 ## Show Your Support!
