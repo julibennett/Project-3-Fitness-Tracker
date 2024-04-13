@@ -1,7 +1,6 @@
-# Project-3---FitHub
+# Project-3---FitHub🧘‍♀️🤸‍♂️💪🥊
 FitHub
-Take care of all your class tracking needs with our new app, FITHUB! Manage your entire workout schedule seamlessly to ensure that you never miss a class. Our app enables users to add all of their workout classes easily, as well as review them with a few simple clicks! Hesitant about trying a new class for the first time? Hear what other users have to say in the reviews section. What are you waiting for, start using FitHub now!
---insert photos here after final product--
+Take care of all your class tracking needs with our new app, FITHUB! Manage your entire workout schedule seamlessly to ensure that you never miss a class. Our app enables users to add all of their workout classes easily, as well as review them with a few simple clicks! What are you waiting for, start using FitHub now!
 Request Methods:
 | Method | URL                          | Description                                              |
 |--------|------------------------------|----------------------------------------------------------|
@@ -13,6 +12,7 @@ Request Methods:
 | GET    | /api/reservation             | Retrieve all reservations.                              |
 | POST   | /api/reservation             | Add reservation.                                        |
 | DELETE | /api/reservation/:id         | Delete the reservation with specific id.                |
+<br/>
 Technologies Used:
 HTML <br/>
 JavaScript <br/>
@@ -27,9 +27,10 @@ Lecture Notes <br/>
 Stack Overflow <br/>
 ChatGpt <br/>
 Click to view FitHub:
---insert deployed backend Heroku link here--
+https://fithub-frontend-8c32195b1449.herokuapp.com/class
 https://trello.com/b/nPVrBjKJ/project-3
 Next Steps: 
 ~ Incorporate ClassPass API into our application.
-~ Add an administrator role. ?
-~
+~ Add an administrator role.
+
+
